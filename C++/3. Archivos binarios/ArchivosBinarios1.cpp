@@ -12,14 +12,14 @@ int main() {
     Estudiante est1 = {"Juan Perez", 20, 4.5f};
 
     // --- Escritura en archivo binario ---
-    ofstream archivoSalida("estudiante.dat", ios::binary);
+    ofstream archivoSalida("estudiante.bin", ios::binary);
     if (!archivoSalida) {
         cerr << "No se pudo abrir el archivo para escritura.\n";
         return 1;
     }
 
     archivoSalida.write((char*)&est1, sizeof(Estudiante));
-    
+
     /*
         Cuando trabajamos con archivos binarios, usamos:
 
@@ -37,7 +37,7 @@ int main() {
     // --- Lectura del archivo binario ---
     Estudiante est2;
 
-    ifstream archivoEntrada("estudiante.dat", ios::binary);
+    ifstream archivoEntrada("estudiante.bin", ios::binary);
     if (!archivoEntrada) {
         cerr << "No se pudo abrir el archivo para lectura.\n";
         return 1;
