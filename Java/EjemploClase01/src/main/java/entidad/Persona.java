@@ -1,6 +1,26 @@
 package entidad;
 
+
+class Animal {
+    public void sonido() {
+        System.out.println("El animal hace un sonido");
+    }
+}
+
+class Perro extends Animal {
+    @Override
+    public void sonido() {
+        System.out.println("El perro ladra");
+    }
+}
+
+
+
 public class Persona {
+    private final String pais = "Colombia";
+    private static Integer contador;
+
+
     private String nombre;
     private Integer edad;
     private Integer cedula;
@@ -12,6 +32,18 @@ public class Persona {
         this.cedula = cedula;
         this.altura = altura;
     }
+
+
+
+    public Persona() {
+        nombre = "Sin nombre";
+        edad = 0;
+    }
+
+    public void mostrarDatos() {
+        System.out.println(nombre + " tiene " + edad + " años");
+    }
+
 
     public Persona(String nombre, Integer edad) {
         this.nombre = nombre;
@@ -52,6 +84,21 @@ public class Persona {
 
     public String saludar() {
         return "Hola mi nombre es " + this.nombre + " y mi edad es " + this.edad;
+
+
+
+    }
+
+    public final void imprimirInfo() {
+        System.out.println("Información general");
+    }
+
+    public void saludar(String nombre) {
+        System.out.println("Hola " + nombre + "!" + "mi nombre es " +  this.nombre);
+    }
+
+    public static void mostrarContador() {
+        System.out.println("Objetos creados: " + contador);
     }
 
     @Override

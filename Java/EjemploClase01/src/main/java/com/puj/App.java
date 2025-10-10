@@ -8,6 +8,8 @@ public class App
 {
     public static void main( String[] args )
     {
+        Persona.mostrarContador();
+
         Scanner sc = new Scanner(System.in);
         System.out.print("Ingrese el nombre de la persona 1: ");
         String nombre1 = sc.nextLine();
