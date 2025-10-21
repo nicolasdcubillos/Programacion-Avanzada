@@ -55,6 +55,11 @@ public class ControladorFechas {
         return fecha1.isEqual(fecha2);
     }
 
+    // Sumar o restar días, meses o años a una fecha
+    public static LocalDate modificarFecha(LocalDate fecha, int dias, int meses, int años) {
+        return fecha.plusDays(dias).plusMonths(meses).plusYears(años);
+    }
+
     // ======== API antigua (java.util.Date) ========
 
     // Obtener fecha actual con Date
