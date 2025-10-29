@@ -3,7 +3,7 @@ package enums;
 public enum Banco {
     Davivienda,
     Bancolombia,
-    BancoBogota,
+    BancoDeBogota,
     BBVA,
     Scotiabank,
     Colpatria
