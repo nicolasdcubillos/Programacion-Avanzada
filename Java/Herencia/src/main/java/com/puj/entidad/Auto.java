@@ -10,6 +10,7 @@ public class Auto extends Vehiculo {
 
     @Override
     public void mostrarInfo() {
+        System.out.println(super.marca);
         super.mostrarInfo();
         System.out.println("Puertas: " + puertas);
     }
