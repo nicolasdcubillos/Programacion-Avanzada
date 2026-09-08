@@ -29,7 +29,7 @@ int main() {
         return 1;
     }
 
-    salida.write(reinterpret_cast<const char*>(productos), sizeof(productos));
+    salida.write((const char*)(productos), sizeof(productos));
     salida.close();
 
     int posicion;
@@ -50,7 +50,7 @@ int main() {
     entrada.seekg(posicion * sizeof(Producto), ios::beg);
 
     Producto producto;
-    entrada.read(reinterpret_cast<char*>(&producto), sizeof(Producto));
+    entrada.read((char*)(&producto), sizeof(Producto));
     if (!entrada) {
         cerr << "No se pudo leer el registro.\n";
         return 1;

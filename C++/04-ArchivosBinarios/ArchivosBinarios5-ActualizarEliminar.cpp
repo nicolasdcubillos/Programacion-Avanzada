@@ -21,7 +21,7 @@ void listarCuentas(const char* nombreArchivo) {
 
     cout << "\nCuentas activas:\n";
     cout << fixed << setprecision(2);
-    while (archivo.read(reinterpret_cast<char*>(&cuenta), sizeof(Cuenta))) {
+    while (archivo.read((char*)(&cuenta), sizeof(Cuenta))) {
         if (cuenta.activa) {
             cout << cuenta.numero << " | " << cuenta.titular
                  << " | $" << cuenta.saldo << "\n";
@@ -42,7 +42,7 @@ int main() {
         cerr << "No se pudo crear el archivo.\n";
         return 1;
     }
-    salida.write(reinterpret_cast<const char*>(cuentas), sizeof(cuentas));
+    salida.write((const char*)(cuentas), sizeof(cuentas));
     salida.close();
 
     fstream archivo(nombreArchivo, ios::in | ios::out | ios::binary);
@@ -53,16 +53,16 @@ int main() {
 
     Cuenta cuenta;
     archivo.seekg(posicionRegistro(1), ios::beg);
-    archivo.read(reinterpret_cast<char*>(&cuenta), sizeof(Cuenta));
+    archivo.read((char*)(&cuenta), sizeof(Cuenta));
     cuenta.saldo += 150000.0;
     archivo.seekp(posicionRegistro(1), ios::beg);
-    archivo.write(reinterpret_cast<const char*>(&cuenta), sizeof(Cuenta));
+    archivo.write((const char*)(&cuenta), sizeof(Cuenta));
 
     archivo.seekg(posicionRegistro(0), ios::beg);
-    archivo.read(reinterpret_cast<char*>(&cuenta), sizeof(Cuenta));
+    archivo.read((char*)(&cuenta), sizeof(Cuenta));
     cuenta.activa = false;
     archivo.seekp(posicionRegistro(0), ios::beg);
-    archivo.write(reinterpret_cast<const char*>(&cuenta), sizeof(Cuenta));
+    archivo.write((const char*)(&cuenta), sizeof(Cuenta));
     archivo.close();
 
     cout << "Se actualizo el saldo de la cuenta 1002.\n";

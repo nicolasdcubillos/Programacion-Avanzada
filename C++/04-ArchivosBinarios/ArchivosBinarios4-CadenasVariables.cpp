@@ -14,13 +14,13 @@ struct Libro {
 
 void escribirCadena(ofstream& archivo, const string& texto) {
     uint32_t longitud = static_cast<uint32_t>(texto.size());
-    archivo.write(reinterpret_cast<const char*>(&longitud), sizeof(longitud));
+    archivo.write((const char*)(&longitud), sizeof(longitud));
     archivo.write(texto.data(), longitud);
 }
 
 bool leerCadena(ifstream& archivo, string& texto) {
     uint32_t longitud;
-    if (!archivo.read(reinterpret_cast<char*>(&longitud), sizeof(longitud))) {
+    if (!archivo.read((char*)(&longitud), sizeof(longitud))) {
         return false;
     }
 
@@ -31,7 +31,7 @@ bool leerCadena(ifstream& archivo, string& texto) {
 void escribirLibro(ofstream& archivo, const Libro& libro) {
     escribirCadena(archivo, libro.titulo);
     escribirCadena(archivo, libro.autor);
-    archivo.write(reinterpret_cast<const char*>(&libro.anio), sizeof(libro.anio));
+    archivo.write((const char*)(&libro.anio), sizeof(libro.anio));
 }
 
 bool leerLibro(ifstream& archivo, Libro& libro) {
@@ -40,7 +40,7 @@ bool leerLibro(ifstream& archivo, Libro& libro) {
     }
 
     return static_cast<bool>(
-        archivo.read(reinterpret_cast<char*>(&libro.anio), sizeof(libro.anio))
+        archivo.read((char*)(&libro.anio), sizeof(libro.anio))
     );
 }
 
@@ -59,7 +59,7 @@ int main() {
     }
 
     uint32_t cantidad = static_cast<uint32_t>(libros.size());
-    salida.write(reinterpret_cast<const char*>(&cantidad), sizeof(cantidad));
+    salida.write((const char*)(&cantidad), sizeof(cantidad));
     for (const Libro& libro : libros) {
         escribirLibro(salida, libro);
     }
@@ -71,7 +71,7 @@ int main() {
         return 1;
     }
 
-    entrada.read(reinterpret_cast<char*>(&cantidad), sizeof(cantidad));
+    entrada.read((char*)(&cantidad), sizeof(cantidad));
     cout << "Libros guardados: " << cantidad << "\n\n";
 
     for (uint32_t i = 0; i < cantidad; ++i) {
