@@ -12,6 +12,8 @@ public class App {
             region.añadirPersonaje("dragon"); // 22 - 10 - 5 - 5 = 2 -> falla
         } catch (RecursosInsuficientesException e) {
             System.out.println("Excepción: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         Personaje dragon = region.getEjercito().get(0);

@@ -18,7 +18,7 @@ public class Arena {
         this.equipo = new ArrayList<>();
     }
 
-    public void anadirRobot(String tipoRobot) throws EnergiaInsuficienteException {
+    public void anadirRobot(String tipoRobot) throws EnergiaInsuficienteException, Exception {
         if (tipoRobot.equalsIgnoreCase("combate")) {
             if (energia < 8) {
                 throw new EnergiaInsuficienteException("Energía insuficiente para un robot de combate");
@@ -32,7 +32,7 @@ public class Arena {
             equipo.add(new RobotVolador(20, 150, 45));
             energia -= 12;
         } else {
-            throw new IllegalArgumentException("Tipo de robot desconocido: " + tipoRobot);
+            throw new Exception("Tipo de robot desconocido: " + tipoRobot);
         }
     }
 

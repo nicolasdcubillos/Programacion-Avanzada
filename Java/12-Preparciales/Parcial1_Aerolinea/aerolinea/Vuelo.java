@@ -47,7 +47,11 @@ public abstract class Vuelo implements Serializable {
 
     // Parte B: elimina los pasajeros menores de 18 años
     public void eliminarPasajerosMenoresDeEdad() {
-        pasajeros.removeIf(p -> p.calcularEdad() < 18);
+        for (int i = pasajeros.size() - 1; i >= 0; i--) {
+            if (pasajeros.get(i).calcularEdad() < 18) {
+                pasajeros.remove(i);
+            }
+        }
     }
 
     public void agregarPasajero(Pasajero pasajero) {

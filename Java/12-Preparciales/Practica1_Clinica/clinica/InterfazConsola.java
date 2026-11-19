@@ -37,6 +37,8 @@ public class InterfazConsola {
             clinica.agregarPaciente(101, "Juan", 2, LocalDate.of(1990, 7, 9), 3); // repetido
         } catch (PacienteExistenteException ex) {
             System.out.println("Excepción: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
 
         g.eliminarPacientesMayores();

@@ -20,7 +20,11 @@ public class Nomina {
     }
 
     public void eliminarProfesor(String correo) {
-        profesores.removeIf(p -> p.getCorreo().equals(correo));
+        for (int i = profesores.size() - 1; i >= 0; i--) {
+            if (profesores.get(i).getCorreo().equals(correo)) {
+                profesores.remove(i);
+            }
+        }
     }
 
     // Polimorfismo: cada profesor responde con su propio imprimirSalario()

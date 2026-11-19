@@ -39,6 +39,8 @@ public class InterfazConsola {
             avianca.agregarPasajero(2850, "Ana", 1, LocalDate.of(1995, 5, 10), 12); // repetido
         } catch (PasajeroExistenteException e) {
             System.out.println("Excepción: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         n.eliminarPasajerosMenoresDeEdad();

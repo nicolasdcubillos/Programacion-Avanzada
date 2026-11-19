@@ -12,6 +12,8 @@ public class App {
             arena.anadirRobot("volador"); // 30 - 12 - 8 - 8 = 2 -> falla
         } catch (EnergiaInsuficienteException e) {
             System.out.println("Excepción: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         Robot volador = arena.getEquipo().get(0);

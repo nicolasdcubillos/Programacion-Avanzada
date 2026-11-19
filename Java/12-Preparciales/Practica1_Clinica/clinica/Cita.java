@@ -42,7 +42,11 @@ public abstract class Cita implements Serializable {
     }
 
     public void eliminarPacientesMayores() {
-        pacientes.removeIf(p -> p.calcularEdad() >= 65);
+        for (int i = pacientes.size() - 1; i >= 0; i--) {
+            if (pacientes.get(i).calcularEdad() >= 65) {
+                pacientes.remove(i);
+            }
+        }
     }
 
     public void agregarPaciente(Paciente paciente) {

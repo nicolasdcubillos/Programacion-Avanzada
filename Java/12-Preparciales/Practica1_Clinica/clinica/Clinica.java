@@ -32,10 +32,10 @@ public class Clinica implements Serializable {
     }
 
     public void agregarPaciente(int numeroCita, String nombre, int id, LocalDate fechaNacimiento,
-                                int numeroTurno) throws PacienteExistenteException {
+                                int numeroTurno) throws PacienteExistenteException, Exception {
         Cita cita = buscarCita(numeroCita);
         if (cita == null) {
-            throw new IllegalArgumentException("No existe la cita " + numeroCita);
+            throw new Exception("No existe la cita " + numeroCita);
         }
         if (cita.buscarPaciente(nombre) != null) {
             throw new PacienteExistenteException("El paciente " + nombre + " ya está en la cita " + numeroCita);
@@ -57,7 +57,10 @@ public class Clinica implements Serializable {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("reporteEspecialidad.txt"))) {
             for (Cita c : citas) {
                 if (c.getEspecialidad().equalsIgnoreCase(especialidad)) {
-                    String tipo = (c instanceof General) ? "General" : "Especialista";
+                    String tipo = "Especialista";
+                    if (c instanceof General) {
+                        tipo = "General";
+                    }
                     bw.write("<" + tipo + ">-<" + nombre + "-" + c.descripcionEspecifica() + ">");
                     bw.newLine();
                 }

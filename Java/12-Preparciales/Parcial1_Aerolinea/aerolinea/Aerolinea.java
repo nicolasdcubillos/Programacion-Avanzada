@@ -34,10 +34,10 @@ public class Aerolinea implements Serializable {
 
     // Agrega un pasajero al vuelo; si ya existe, lanza excepción
     public void agregarPasajero(int numeroVuelo, String nombre, int id,
-                                LocalDate fechaNacimiento, int numeroSilla) throws PasajeroExistenteException {
+                                LocalDate fechaNacimiento, int numeroSilla) throws PasajeroExistenteException, Exception {
         Vuelo vuelo = buscarVuelo(numeroVuelo);
         if (vuelo == null) {
-            throw new IllegalArgumentException("No existe el vuelo " + numeroVuelo);
+            throw new Exception("No existe el vuelo " + numeroVuelo);
         }
         if (vuelo.buscarPasajero(nombre) != null) {
             throw new PasajeroExistenteException("El pasajero " + nombre + " ya está en el vuelo " + numeroVuelo);
@@ -64,7 +64,10 @@ public class Aerolinea implements Serializable {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("vuelosOrigen.txt"))) {
             for (Vuelo v : vuelos) {
                 if (v.getOrigen().equalsIgnoreCase(origen)) {
-                    String tipo = (v instanceof Nacional) ? "Nacional" : "Internacional";
+                    String tipo = "Internacional";
+                    if (v instanceof Nacional) {
+                        tipo = "Nacional";
+                    }
                     bw.write("<" + tipo + ">-<" + nombre + "-" + v.getNumeroVuelo() + "-" + v.getOrigen()
                             + "-" + v.getDestino() + "-" + v.descripcionEspecifica() + ">");
                     bw.newLine();

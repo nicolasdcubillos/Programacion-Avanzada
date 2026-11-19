@@ -19,7 +19,7 @@ public class Region {
     }
 
     // Soldado cuesta 5 recursos y Dragón 10; si no alcanzan, lanza excepción
-    public void añadirPersonaje(String tipoPersonaje) throws RecursosInsuficientesException {
+    public void añadirPersonaje(String tipoPersonaje) throws RecursosInsuficientesException, Exception {
         if (tipoPersonaje.equalsIgnoreCase("soldado")) {
             if (recursos < 5) {
                 throw new RecursosInsuficientesException("Recursos insuficientes para crear un soldado");
@@ -33,7 +33,7 @@ public class Region {
             ejercito.add(new Dragon(30, 300, 60));
             recursos -= 10;
         } else {
-            throw new IllegalArgumentException("Tipo de personaje desconocido: " + tipoPersonaje);
+            throw new Exception("Tipo de personaje desconocido: " + tipoPersonaje);
         }
     }
 

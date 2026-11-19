@@ -23,7 +23,11 @@ public abstract class Robot implements Serializable {
         for (Robot objetivo : objetivos) {
             atacar(objetivo);
         }
-        objetivos.removeIf(r -> r.getBateria() <= 0);
+        for (int i = objetivos.size() - 1; i >= 0; i--) {
+            if (objetivos.get(i).getBateria() <= 0) {
+                objetivos.remove(i);
+            }
+        }
     }
 
     public int getPotenciaBase() {
