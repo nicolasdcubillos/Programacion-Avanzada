@@ -2,7 +2,6 @@ package estrategia;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public abstract class Personaje implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -25,10 +24,9 @@ public abstract class Personaje implements Serializable {
         for (Personaje objetivo : objetivos) {
             atacar(objetivo);
         }
-        Iterator<Personaje> it = objetivos.iterator();
-        while (it.hasNext()) {
-            if (it.next().getVida() < 0) {
-                it.remove();
+        for (int i = objetivos.size() - 1; i >= 0; i--) {
+            if (objetivos.get(i).getVida() < 0) {
+                objetivos.remove(i);
             }
         }
     }

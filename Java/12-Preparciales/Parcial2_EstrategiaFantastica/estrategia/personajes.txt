@@ -1,0 +1,15 @@
+Tipo de personaje: Dragón
+Ataque base: 30
+Vida: 300
+Ataque adicional: 60
+
+Tipo de personaje: Soldado
+Ataque base: 10
+Vida: -80
+Ataque adicional: 15
+
+Tipo de personaje: Soldado
+Ataque base: 10
+Vida: -80
+Ataque adicional: 15
+
